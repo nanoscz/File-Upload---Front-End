@@ -1,14 +1,16 @@
 export class FileItem {
   file: File;
-  nameFile: string;
+  sizeBytes: number;
+  fileName: string;
   url: string;
   status: boolean;
   progress: number;
   
   constructor(file:File){
     this.file = file;
-    this.nameFile = file.name;
+    this.fileName = file.name;
+    this.sizeBytes = file.size;
     this.status = false;
-    this.progress = 0;
+    this.progress = 50;
   }
 }
