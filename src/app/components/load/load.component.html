@@ -1,3 +1,35 @@
-<p>
-  load works!
-</p>
+<div class="row">
+  <div class="col-md-4">
+    <h3>Select file: </h3>
+    <div appNgDropFiles class="drop-zone" [fileList]="fileList" [ngClass]="{'file-over': mouseOver }"
+      (mouseOver)="mouseOver = $event;">
+      <h4>deje caer aqui los archivos</h4>
+      <img src="assets/drop-images.png">
+    </div>
+  </div>
+  <div class="col-md-8">
+    <h4>cargar archivos</h4>
+    <button class="btn btn-success mr-2" (click)="loadFile();">Cargar</button>
+    <button class="btn btn-primary" (click)="reset();"> reset</button>
+    <table class="table mt-4">
+      <thead>
+        <tr>
+          <th>name</th>
+          <th>size</th>
+          <th>progress</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let file of fileList">
+          <td> {{ file.nameFile }}</td>
+          <td> {{ file.sizeBytes }}</td>
+          <td>
+            <div class="progress">
+              <div class="progress-bar" role="progressbar" [ngStyle]="{'width': file.progress + '%'}"></div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
